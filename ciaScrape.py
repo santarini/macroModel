@@ -127,7 +127,7 @@ with open("cleanCountries.csv") as csvfileA:
                 GNSDateEst = GNS.split('(')[1]
                 GNS = GNS.split('(')[0]
             if " of GDP " in GNS:
-                GNS = GNS.split(' of GDP :')[0]
+                GNS = GNS.split(' of GDP ')[0]
 
 ##            #GDP by end use:
 ##            if "GDP - real growth rate:" not in soup.text:
@@ -201,6 +201,8 @@ with open("cleanCountries.csv") as csvfileA:
             if "(" in inflation:
                 inflationDateEst = inflation.split('(')[1]
                 inflation = inflation.split('(')[0]
+            if "world average:" in inflation:
+                inflation = inflation.split('world average:')[1]
             
             #Commercial Bank Prime Lending Rate
             if "Commercial bank prime lending rate:" not in soup.text:
@@ -329,3 +331,4 @@ with open("cleanCountries.csv") as csvfileA:
                              'Exports': exports ,
                              'Imports': imports
                              })
+            
