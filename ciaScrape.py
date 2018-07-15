@@ -126,8 +126,8 @@ with open("cleanCountries.csv") as csvfileA:
             if "(" in GNS:
                 GNSDateEst = GNS.split('(')[1]
                 GNS = GNS.split('(')[0]
-            if " of GDP " in population:
-                population = population.split(' of GDP :')[0]
+            if " of GDP " in GNS:
+                GNS = GNS.split(' of GDP :')[0]
 
 ##            #GDP by end use:
 ##            if "GDP - real growth rate:" not in soup.text:
@@ -149,6 +149,7 @@ with open("cleanCountries.csv") as csvfileA:
 ##                RealGDPgrowthDateEst = GDPgrowth.split('(')[1]
 ##                RealGDPgrowth = GDPgrowth.split('(')[0]
 
+
             #Labor Force
             if "Labor force:" not in soup.text:
                 LaborForce = 'Not listed'
@@ -160,7 +161,6 @@ with open("cleanCountries.csv") as csvfileA:
                 LaborForce = LaborForce.split('(')[0]
             if "million" in LaborForce:
                 LaborForce = LaborForce.split('million')[0]
-                LaborForce = LaborForce[1:]
                 LaborForce = float(LaborForce) * 10**6
             elif "billion" in LaborForce:
                 LaborForce = LaborForce.split('billion')[0]
