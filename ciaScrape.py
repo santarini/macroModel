@@ -283,34 +283,6 @@ with open("cleanCountries.csv") as csvfileA:
                 imports = float(imports)
                 imports = int(imports) * 10**12
 
-
-#other
-##
-##            #Median age:
-##            if "Median age:" not in soup.text:
-##                medianAge = 'Not listed'
-##            else:
-##                medianAge = soup.body.find(text='Median age:').findNext('div')
-##                medianAge = medianAge.text
-##            if "(" in GDPgrowth:
-##                medianAgeDateEst = medianAge.split('(')[1]
-##                medianAge = medianAge.split('(')[0]
-##            if "total: " in medianAge:
-##                medianAge = medianAge.split('total: ')[1]
-##            if "years" in medianAge:
-##                medianAge = medianAge.split('years')[0]
-##                
-##            #Capital:
-##            if "Capital:" not in soup.text:
-##                capital = 'Not listed'
-##            else:
-##                capital = soup.body.find(text='Capital:').findNext('div')
-##                capital = capital.text
-##            if "name: " in capital:
-##                capital = capital.split('name: ')[1]
-##            if "capital: " in capital:
-##                capital = capital.split('capital: ')[1]
-
             #print to csv
             writer.writerow({'Region': regionName,
                              'Code': countryCode,
