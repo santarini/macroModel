@@ -126,6 +126,8 @@ with open("cleanCountries.csv") as csvfileA:
             if "(" in GNS:
                 GNSDateEst = GNS.split('(')[1]
                 GNS = GNS.split('(')[0]
+            if " of GDP " in population:
+                population = population.split(' of GDP :')[0]
 
 ##            #GDP by end use:
 ##            if "GDP - real growth rate:" not in soup.text:
@@ -156,6 +158,19 @@ with open("cleanCountries.csv") as csvfileA:
             if "(" in LaborForce:
                 LaborForceDateEst = LaborForce.split('(')[1]
                 LaborForce = LaborForce.split('(')[0]
+            if "million" in LaborForce:
+                LaborForce = LaborForce.split('million')[0]
+                LaborForce = LaborForce[1:]
+                LaborForce = float(LaborForce) * 10**6
+            elif "billion" in LaborForce:
+                LaborForce = LaborForce.split('billion')[0]
+                LaborForce = LaborForce[1:]
+                LaborForce = float(LaborForce) * 10**9
+            elif "trillion" in LaborForce:
+                LaborForce = LaborForce.split('trillion')[0]
+                LaborForce = LaborForce[1:]
+                LaborForce = float(LaborForce)
+                LaborForce = int(LaborForce) * 10**12
 
             #Unemployment Rate
             if "Unemployment rate:" not in soup.text:
@@ -206,6 +221,19 @@ with open("cleanCountries.csv") as csvfileA:
             if "(" in publiclyTraded:
                 publiclyTradedDateEst = publiclyTraded.split('(')[1]
                 publiclyTraded = publiclyTraded.split('(')[0]
+            if "million" in publiclyTraded:
+                publiclyTraded = publiclyTraded.split('million')[0]
+                publiclyTraded = publiclyTraded[1:]
+                publiclyTraded = float(publiclyTraded) * 10**6
+            elif "billion" in publiclyTraded:
+                publiclyTraded = publiclyTraded.split('billion')[0]
+                publiclyTraded = publiclyTraded[1:]
+                publiclyTraded = float(publiclyTraded) * 10**9
+            elif "trillion" in publiclyTraded:
+                publiclyTraded = publiclyTraded.split('trillion')[0]
+                publiclyTraded = publiclyTraded[1:]
+                publiclyTraded = float(publiclyTraded)
+                publiclyTraded = int(publiclyTraded) * 10**12
 
             #Exports
             if "Exports:" not in soup.text:
@@ -216,6 +244,19 @@ with open("cleanCountries.csv") as csvfileA:
             if "(" in exports:
                 exportsDateEst = exports.split('(')[1]
                 exports = exports.split('(')[0]
+            if "million" in exports:
+                exports = exports.split('million')[0]
+                exports = exports[1:]
+                exports = float(exports) * 10**6
+            elif "billion" in exports:
+                exports = exports.split('billion')[0]
+                exports = exports[1:]
+                exports = float(exports) * 10**9
+            elif "trillion" in exports:
+                exports = exports.split('trillion')[0]
+                exports = exports[1:]
+                exports = float(exports)
+                exports = int(exports) * 10**12
 
             #Imports
             if "Imports:" not in soup.text:
@@ -226,6 +267,19 @@ with open("cleanCountries.csv") as csvfileA:
             if "(" in imports:
                 importsDateEst = imports.split('(')[1]
                 imports = imports.split('(')[0]
+            if "million" in imports:
+                imports = imports.split('million')[0]
+                imports = imports[1:]
+                imports = float(imports) * 10**6
+            elif "billion" in imports:
+                imports = imports.split('billion')[0]
+                imports = imports[1:]
+                imports = float(imports) * 10**9
+            elif "trillion" in imports:
+                imports = imports.split('trillion')[0]
+                imports = imports[1:]
+                imports = float(imports)
+                imports = int(imports) * 10**12
 
 
 #other
@@ -275,4 +329,3 @@ with open("cleanCountries.csv") as csvfileA:
                              'Exports': exports ,
                              'Imports': imports
                              })
-            
